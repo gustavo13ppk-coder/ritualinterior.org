@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Método Paz Interior — Descubra o que bloqueia sua paz</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CCH53MZEB4"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CCH53MZEB4');</script>
+<style>
+:root{
+  --sage:#6B8F71;--sage-l:#EAF0EB;--sage-d:#3D5C42;
+  --cream:#FAFAF7;--cream2:#F2EDE4;--cream3:#E8E0D0;
+  --cinza:#636E72;--cinza-d:#2D3436;--cinza-l:#B2BEC3;
+  --branco:#FFFFFF;--sombra:rgba(45,52,54,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--cinza-d);overflow-x:hidden;min-height:100vh}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;line-height:1.15}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+
+.page{display:none}.page.active{display:block;animation:fadeUp .45s ease}
+.wrap{max-width:540px;margin:0 auto;padding:28px 20px 52px}
+
+/* PROGRESS */
+.prog-wrap{padding:20px 20px 0;max-width:540px;margin:0 auto}
+.prog-bar{height:3px;background:var(--cream3);border-radius:100px;overflow:hidden}
+.prog-fill{height:100%;background:var(--sage);border-radius:100px;transition:width .4s ease}
+.prog-label{font-size:.72rem;color:var(--cinza-l);margin-bottom:8px;display:flex;justify-content:space-between}
+
+/* QUIZ */
+.quiz-q{font-family:'Cormorant Garamond',serif;font-size:clamp(1.35rem,5vw,1.75rem);text-align:center;color:var(--cinza-d);margin-bottom:8px;line-height:1.25}
+.quiz-sub{text-align:center;color:var(--cinza);font-size:.86rem;margin-bottom:28px}
+.opcoes{display:flex;flex-direction:column;gap:10px}
+.opcao{background:var(--branco);border:1.5px solid var(--cream3);border-radius:14px;padding:16px 18px;cursor:pointer;font-size:.92rem;color:var(--cinza-d);transition:all .18s;text-align:center;font-weight:500}
+.opcao:hover,.opcao.sel{background:var(--sage-l);border-color:var(--sage);color:var(--sage-d)}
+.opcao small{display:block;color:var(--cinza-l);font-weight:400;margin-top:4px;font-size:.72rem}
+.date-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mini-note{text-align:center;font-size:.76rem;color:var(--cinza-l);line-height:1.55;margin-top:12px}
+.analise-card{background:var(--branco);border-radius:18px;padding:28px 22px;text-align:center;box-shadow:0 2px 16px var(--sombra)}
+.analise-pulse{width:54px;height:54px;border-radius:50%;background:var(--sage-l);margin:0 auto 18px;display:grid;place-items:center;color:var(--sage-d);font-size:1.6rem;animation:pulse 1.4s infinite}
+.personal-line{background:var(--sage-l);border-radius:12px;padding:13px 15px;color:var(--sage-d);font-size:.84rem;line-height:1.55;text-align:center;margin:14px 0 18px}
+
+/* FORM */
+.campo{width:100%;background:var(--branco);border:1.5px solid var(--cream3);border-radius:12px;padding:14px 16px;font-size:.95rem;color:var(--cinza-d);font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s;margin-bottom:12px}
+.campo:focus{border-color:var(--sage)}
+
+/* BOTÃO */
+.btn-sage{display:block;width:100%;max-width:480px;margin:0 auto;background:var(--sage);color:var(--branco);font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;padding:18px 24px;border-radius:14px;text-decoration:none;border:none;cursor:pointer;text-align:center;transition:background .15s,transform .15s;position:relative;overflow:hidden;letter-spacing:.02em}
+.btn-sage::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);animation:shimmer 2.5s infinite}
+.btn-sage:hover{background:var(--sage-d);transform:translateY(-1px)}
+.btn-sage small{display:block;font-size:.75rem;font-weight:400;opacity:.8;margin-top:3px;letter-spacing:0}
+
+.btn-outline{display:block;width:100%;max-width:480px;margin:10px auto 0;background:transparent;border:1.5px solid var(--cream3);color:var(--cinza);font-size:.82rem;padding:13px;border-radius:12px;cursor:pointer;text-align:center;transition:opacity .2s;font-family:'DM Sans',sans-serif}
+.btn-outline:hover{opacity:.65}
+
+/* RESULTADO */
+.result-card{background:var(--branco);border-radius:18px;padding:24px 20px;margin:20px 0;box-shadow:0 2px 16px var(--sombra)}
+.result-label{font-size:.7rem;color:var(--sage);text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:6px}
+.result-titulo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--cinza-d);margin-bottom:10px}
+.result-texto{color:var(--cinza);font-size:.88rem;line-height:1.75}
+.bullets{list-style:none;margin:18px 0;display:flex;flex-direction:column;gap:9px}
+.bullets li{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:var(--cinza-d);line-height:1.55}
+.bullets li .dot{color:var(--sage);flex-shrink:0;margin-top:2px;font-size:.9rem}
+
+/* CHECKOUT */
+.prod-card{background:var(--branco);border-radius:18px;padding:24px 18px;margin-bottom:20px;box-shadow:0 2px 16px var(--sombra)}
+.prod-card h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;margin-bottom:8px}
+.entregaveis{list-style:none;margin:16px 0;display:flex;flex-direction:column;gap:8px}
+.entregaveis li{display:flex;align-items:center;gap:8px;font-size:.84rem;color:var(--cinza)}
+.entregaveis li .e-dot{color:var(--sage)}
+.preco-bloco{text-align:center;margin:18px 0 14px}
+.preco-de{color:var(--cinza-l);font-size:.88rem;text-decoration:line-through}
+.preco-por{font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--sage-d);line-height:1}
+.preco-por small{font-size:1.4rem}
+.preco-desc{font-size:.76rem;color:var(--cinza-l);margin-top:3px}
+.garantia{display:flex;align-items:center;gap:12px;background:var(--sage-l);border-radius:12px;padding:14px 16px;margin-top:16px}
+.garantia .g-num{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--sage-d);flex-shrink:0;line-height:1}
+.garantia p{font-size:.78rem;color:var(--cinza);line-height:1.5}
+.selos{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-top:14px;color:var(--cinza-l);font-size:.74rem}
+.selos span{display:flex;align-items:center;gap:4px}
+
+/* POPUP */
+.popup-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(45,52,54,.7);align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(3px)}
+.popup-overlay.active{display:flex;animation:fadeUp .3s ease}
+.popup-box{background:var(--branco);border-radius:22px;padding:32px 24px;max-width:380px;width:100%;text-align:center;box-shadow:0 8px 40px rgba(45,52,54,.18);position:relative}
+.popup-close{position:absolute;top:14px;right:18px;background:none;border:none;color:var(--cinza-l);font-size:1.2rem;cursor:pointer}
+.popup-box h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;margin-bottom:10px;color:var(--cinza-d)}
+.popup-box p{color:var(--cinza);font-size:.86rem;line-height:1.65;margin-bottom:18px}
+.popup-preco{font-family:'Cormorant Garamond',serif;font-size:2.8rem;color:var(--sage-d);line-height:1;margin-bottom:4px}
+.popup-de{color:var(--cinza-l);font-size:.82rem;text-decoration:line-through;margin-bottom:14px}
+
+/* OBRIGADO */
+.dl-card{background:var(--branco);border-radius:16px;padding:20px 18px;margin:14px 0;box-shadow:0 2px 12px var(--sombra)}
+.dl-card h4{font-size:.92rem;font-weight:700;color:var(--cinza-d);margin-bottom:6px}
+.dl-card p{font-size:.82rem;color:var(--cinza);margin-bottom:14px;line-height:1.6}
+.btn-dl{display:inline-flex;align-items:center;gap:7px;background:var(--sage-l);color:var(--sage-d);font-weight:700;font-size:.84rem;padding:11px 18px;border-radius:10px;text-decoration:none;border:none;cursor:pointer;transition:background .15s}
+.btn-dl:hover{background:var(--cream3)}
+
+/* AUDIO */
+.audio-wrap{background:var(--cream2);border-radius:14px;padding:18px 16px;margin:14px 0;text-align:center}
+.audio-wrap p{font-size:.82rem;color:var(--cinza);margin-bottom:12px}
+
+/* DIVISOR */
+.div{height:1px;background:var(--cream3);margin:24px 0}
+@media (max-width:420px){
+  .wrap{padding:24px 16px 44px}
+  .prog-wrap{padding:16px 16px 0}
+  .btn-sage{padding:16px 18px}
+  .opcao{padding:15px 14px}
+}
+</style>
+</head>
+<body>
+
+<!-- EXIT POPUP -->
+<div class="popup-overlay" id="popup-exit">
+  <div class="popup-box">
+    <button class="popup-close" onclick="fecharPopup()">✕</button>
+    <p style="font-size:2rem;margin-bottom:12px">🕊️</p>
+    <h3 style="font-size:1.35rem;margin-bottom:8px;line-height:1.25">Antes de sair —<br>liberamos um acesso especial.</h3>
+    <div style="height:1px;background:var(--cream3);margin:14px 0"></div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:6px">
+      <div style="text-align:center">
+        <p style="font-size:.72rem;color:var(--cinza-l);text-decoration:line-through">R$ 16,90</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:2.6rem;color:var(--sage-d);line-height:1;font-weight:600">R$ 12</p>
+        <p style="font-size:.7rem;color:var(--cinza-l)">pagamento único</p>
+      </div>
+      <div style="text-align:left;max-width:160px">
+        <p style="font-size:.78rem;color:var(--cinza);line-height:1.6">✔ PDF Método Paz Interior<br>✔ PDF Bônus<br>✔ Áudio 432Hz<br>✔ Acesso imediato</p>
+      </div>
+    </div>
+    <div style="height:1px;background:var(--cream3);margin:14px 0"></div>
+    <a href="https://pay.kiwify.com.br/dgJ3699" class="btn-sage"
+       onclick="gtag('event','popup_comprar',{'event_category':'popup','event_label':'exit'})">
+      Garantir por R$ 12 agora
+      <small>🔒 Pagamento seguro · Acesso imediato</small>
+    </a>
+    <button class="btn-outline" onclick="fecharPopup()">Não, prefiro sair sem acessar</button>
+  </div>
+</div>
+
+<!-- PÁG 1: QUIZ INTRO -->
+<div id="p-quiz" class="page active">
+  <div class="prog-wrap">
+    <div class="prog-label"><span id="prog-label">Pergunta 1 de 5</span><span id="prog-pct">20%</span></div>
+    <div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:20%"></div></div>
+  </div>
+
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:28px">
+      <p style="font-size:.72rem;color:var(--sage);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">✦ LEITURA RÁPIDA ✦</p>
+      <h1 style="font-size:clamp(1.65rem,6.2vw,2.45rem);margin-bottom:10px">Entenda o que sua energia está pedindo agora.</h1>
+      <p style="color:var(--cinza);font-size:.9rem;line-height:1.7">Um quiz leve para revelar onde sua vida pede mais calma, clareza e direção.</p>
+    </div>
+
+    <div id="quiz-conteudo"></div>
+  </div>
+</div>
+
+<!-- TRANSIÇÃO -->
+<div id="p-transicao" class="page">
+  <div class="wrap">
+    <div class="analise-card">
+      <div class="analise-pulse">✦</div>
+      <h2 style="font-size:clamp(1.45rem,5.5vw,2rem);margin-bottom:10px">Estamos analisando sua vibração energética...</h2>
+      <p id="analise-texto" style="color:var(--cinza);font-size:.9rem;line-height:1.7">Cruzando seu signo, nascimento e área de maior mudança.</p>
+      <div class="prog-bar" style="margin-top:22px"><div class="prog-fill" style="width:72%"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PÁG 2: RESULTADO -->
+<div id="p-resultado" class="page">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:24px">
+      <p style="font-size:2rem;margin-bottom:10px">🕊️</p>
+      <p style="font-size:.72rem;color:var(--sage);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">✦ SEU RESULTADO ✦</p>
+      <h2 id="resultado-titulo" style="font-size:clamp(1.55rem,5.8vw,2.25rem);margin-bottom:10px">Sua energia está pedindo pausa e direção</h2>
+    </div>
+
+    <div class="result-card">
+      <div class="result-label">✦ Leitura inicial</div>
+      <div id="personal-line" class="personal-line">Sua combinação mostra um momento de reorganização emocional.</div>
+      <p class="result-texto" id="resultado-texto">Seu teste mostra que você pode estar carregando mais tensão do que percebe. Isso costuma aparecer como cansaço, ansiedade, falta de foco ou sensação de estar sempre tentando dar conta de tudo.</p>
+      <div class="div"></div>
+      <p class="result-texto">A boa notícia é que você não precisa mudar sua vida inteira para sentir alívio. Pequenos rituais guiados podem criar uma pausa real no seu dia e devolver sensação de presença.</p>
+    </div>
+
+    <p style="font-size:.82rem;color:var(--cinza);text-align:center;margin-bottom:16px">O Método Paz Interior foi feito para te ajudar a:</p>
+
+    <ul class="bullets">
+      <li><span class="dot">◆</span>Acalmar a mente em poucos minutos</li>
+      <li><span class="dot">◆</span>Soltar o peso emocional acumulado</li>
+      <li><span class="dot">◆</span>Voltar a sentir clareza antes de agir</li>
+      <li><span class="dot">◆</span>Criar uma rotina simples de cuidado energético</li>
+    </ul>
+
+    <div style="margin-top:28px">
+      <a href="javascript:void(0)" class="btn-sage"
+         onclick="irPara('p-checkout');gtag('event','resultado_cta',{'event_category':'funil'})">
+        Quero começar meu ritual agora
+        <small>Acesso imediato · R$ 16,90</small>
+      </a>
+    </div>
+
+    <p style="text-align:center;font-size:.75rem;color:var(--cinza-l);margin-top:14px">🔒 Pagamento seguro · Garantia de 7 dias</p>
+  </div>
+</div>
+
+<!-- PÁG 3: CHECKOUT -->
+<div id="p-checkout" class="page">
+  <div class="wrap">
+
+    <div style="text-align:center;margin-bottom:26px">
+      <p style="font-size:2rem;margin-bottom:10px">🕊️</p>
+      <h2 style="font-size:clamp(1.5rem,5.5vw,2.2rem);margin-bottom:8px">Método Paz Interior</h2>
+      <p style="color:var(--cinza);font-size:.88rem;line-height:1.65;max-width:360px;margin:0 auto">Um ritual guiado, simples e leve para organizar sua energia e recuperar paz no dia a dia.</p>
+    </div>
+
+    <!-- PREÇO DESTAQUE -->
+    <div style="background:var(--sage-l);border-radius:16px;padding:20px 18px;text-align:center;margin-bottom:16px">
+      <p style="font-size:.72rem;color:var(--sage);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px">Oferta especial</p>
+      <p style="color:var(--cinza-l);font-size:.88rem;text-decoration:line-through;margin-bottom:2px">De R$ 37,00</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:3.2rem;color:var(--sage-d);line-height:1;font-weight:600">R$ 16<span style="font-size:1.6rem">,90</span></p>
+      <p style="font-size:.76rem;color:var(--cinza);margin-top:4px">Pagamento único · Sem mensalidade</p>
+    </div>
+
+    <!-- O QUE RECEBE -->
+    <div class="prod-card" style="margin-bottom:18px">
+      <p style="font-size:.72rem;color:var(--sage);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px">Você recebe hoje</p>
+      <ul class="entregaveis">
+        <li><span class="e-dot">✔</span> Método Paz Interior em PDF</li>
+        <li><span class="e-dot">✔</span> Ritual de 2 minutos para acalmar a mente</li>
+        <li><span class="e-dot">✔</span> Bônus de limpeza energética simples</li>
+        <li><span class="e-dot">✔</span> Áudio guiado para relaxar pelo celular</li>
+      </ul>
+    </div>
+
+    <!-- CTA PRINCIPAL -->
+    <a href="https://pay.kiwify.com.br/sIAKP0R" class="btn-sage"
+       onclick="gtag('event','checkout_comprar',{'event_category':'funil','event_label':'principal'})">
+      Quero acessar agora por R$ 16,90
+      <small>🔒 Pagamento seguro via Pix ou Cartão</small>
+    </a>
+
+    <div class="garantia" style="margin-top:14px">
+      <div class="g-num">7</div>
+      <p><strong>Garantia de 7 dias.</strong><br>Não gostou por qualquer motivo? Devolvemos 100%. Sem perguntas.</p>
+    </div>
+
+    <div class="selos" style="margin-top:14px">
+      <span>🔒 Compra segura</span>
+      <span>📩 Acesso imediato</span>
+      <span>↩️ 7 dias garantia</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- PÁG 4: OBRIGADO + DOWNLOAD -->
+<div id="p-obrigado" class="page">
+  <div class="wrap">
+
+    <!-- HEADER -->
+    <div style="text-align:center;margin-bottom:28px">
+      <p style="font-size:2.5rem;margin-bottom:12px">✅</p>
+      <h2 style="font-size:clamp(1.6rem,5.5vw,2.4rem);margin-bottom:10px;color:var(--cinza-d)">Seu acesso foi liberado.</h2>
+      <p style="color:var(--cinza);font-size:.9rem;line-height:1.75;max-width:360px;margin:0 auto">Reserve os próximos minutos para iniciar seu ritual de paz interior.</p>
+    </div>
+
+    <!-- INSTRUÇÃO -->
+    <div style="background:var(--sage-l);border-radius:14px;padding:16px 18px;margin-bottom:22px;display:flex;gap:12px;align-items:flex-start">
+      <span style="font-size:1.2rem;flex-shrink:0">💡</span>
+      <p style="font-size:.84rem;color:var(--sage-d);line-height:1.65"><strong>Baixe seus materiais.</strong> O Método Paz Interior é o entregável principal. A Limpeza Energética é seu bônus complementar.</p>
+    </div>
+
+    <!-- ÁUDIO -->
+    <div class="dl-card" style="border-left:3px solid var(--sage)">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <span style="font-size:1.6rem">🎵</span>
+        <div>
+          <h4 style="margin-bottom:2px">Áudio Guiado Relaxante</h4>
+          <p style="font-size:.74rem;color:var(--cinza-l);margin:0">432Hz · Ouça com fones de ouvido</p>
+        </div>
+      </div>
+      <a href="https://suno.com/s/s1HswcyedN7ITheA" target="_blank"
+         class="btn-dl" style="width:100%;justify-content:center;display:flex"
+         onclick="gtag('event','audio_play',{'event_category':'obrigado'})">
+        ▶ Ouvir Agora
+      </a>
+    </div>
+
+    <!-- PDF PRINCIPAL -->
+    <div class="dl-card" style="border-left:3px solid var(--sage)">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <span style="font-size:1.6rem">📖</span>
+        <div>
+          <h4 style="margin-bottom:2px">Método Paz Interior</h4>
+          <p style="font-size:.74rem;color:var(--cinza-l);margin:0">Entregável principal · PDF autoral remodelado</p>
+        </div>
+      </div>
+      <a href="downloads/metodo-paz-interior-ritual-interior.pdf" download
+         onclick="gtag('event','abrir_pdf',{'event_category':'obrigado','event_label':'principal'})"
+         class="btn-dl" style="width:100%;justify-content:center;display:flex">
+        📖 Baixar Método Principal
+      </a>
+    </div>
+
+    <!-- PDF BÔNUS -->
+    <div class="dl-card" style="border-left:3px solid var(--sage)">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <span style="font-size:1.6rem">🌿</span>
+        <div>
+          <h4 style="margin-bottom:2px">Bônus — Limpeza Energética</h4>
+          <p style="font-size:.74rem;color:var(--cinza-l);margin:0">Material bônus · PDF autoral remodelado</p>
+        </div>
+      </div>
+      <a href="downloads/bonus-limpeza-energetica-ritual-interior.pdf" download
+         class="btn-dl" style="width:100%;justify-content:center;display:flex"
+         onclick="gtag('event','abrir_pdf',{'event_category':'obrigado','event_label':'bonus'})">
+        🌿 Baixar Bônus
+      </a>
+    </div>
+
+    <!-- PACOTE COMPLETO -->
+    <div class="dl-card" style="border-left:3px solid var(--sage)">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <span style="font-size:1.6rem">📦</span>
+        <div>
+          <h4 style="margin-bottom:2px">Pacote completo</h4>
+          <p style="font-size:.74rem;color:var(--cinza-l);margin:0">Método principal + bônus em ZIP</p>
+        </div>
+      </div>
+      <a href="downloads/ritual-interior-entregaveis.zip" download
+         class="btn-dl" style="width:100%;justify-content:center;display:flex"
+         onclick="gtag('event','download_zip',{'event_category':'obrigado','event_label':'pacote_completo'})">
+        📦 Baixar Tudo em ZIP
+      </a>
+    </div>
+
+    <div style="height:1px;background:var(--cream3);margin:24px 0"></div>
+
+    <p style="text-align:center;font-size:.84rem;color:var(--cinza);line-height:1.85;font-style:italic">
+      "Use o método por alguns minutos ao dia para criar<br>momentos de calma e equilíbrio emocional."
+    </p>
+
+    <p style="text-align:center;font-size:.73rem;color:var(--cinza-l);margin-top:18px">
+      Dúvidas: <a href="mailto:suporte@ritualinterior.org" style="color:var(--sage-d);text-decoration:none">suporte@ritualinterior.org</a>
+    </p>
+
+  </div>
+</div>
+
+<!-- PÁG 5: PDF PRINCIPAL EMBUTIDO -->
+<div id="p-pdf-principal" class="page">
+  <div style="background:var(--cream2);padding:14px 20px;position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;max-width:100%;border-bottom:1px solid var(--cream3)">
+    <button onclick="irPara('p-obrigado')" style="background:none;border:none;color:var(--cinza);cursor:pointer;font-size:.85rem;display:flex;align-items:center;gap:6px">← Voltar</button>
+    <span style="font-size:.75rem;color:var(--cinza-l)">Método Paz Interior</span>
+    <span style="width:60px"></span>
+  </div>
+
+  <div class="wrap" style="padding-top:24px">
+
+    <!-- CAPA -->
+    <div style="text-align:center;padding:32px 0 36px;border-bottom:1px solid var(--cream3);margin-bottom:36px">
+      <p style="font-size:3rem;margin-bottom:16px">🕊️</p>
+      <p style="font-size:.7rem;color:var(--sage);font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px">Ritual Interior</p>
+      <h1 style="font-size:clamp(2rem,8vw,3rem);margin-bottom:10px;color:var(--cinza-d)">Método<br><em style="color:var(--sage-d);font-style:italic">Paz Interior</em></h1>
+      <p style="color:var(--cinza);font-size:.9rem;line-height:1.7">Um ritual simples de 2 minutos<br>para desacelerar sua mente<br>e recuperar sua paz.</p>
+    </div>
+
+    <!-- CAP 1 -->
+    <div style="margin-bottom:40px">
+      <p style="font-size:.68rem;color:var(--sage);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">01</p>
+      <h2 style="font-size:1.7rem;margin-bottom:14px;color:var(--cinza-d)">Sua mente também<br><em style="color:var(--sage-d);font-style:italic">merece descanso</em></h2>
+      <p style="color:var(--cinza);font-size:.9rem;line-height:1.85;margin-bottom:12px">Você não está sendo fraco por se sentir sobrecarregado. Você está sendo humano.</p>
+      <p style="color:var(--cinza);font-size:.9rem;line-height:1.85;margin-bottom:12px">A mente moderna processa milhares de informações por dia — notificações, preocupações, comparações, decisões. Não é à toa que ao final do dia você se sente esgotado sem ter feito esforço físico.</p>
+      <div style="background:var(--sage-l);border-radius:12px;padding:18px 16px;margin:18px 0">
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--sage-d);text-align:center;line-height:1.7">"Paz interior não é a ausência de problemas.<br>É a capacidade de encontrar quietude<br>mesmo quando eles existem."</p>
+      </div>
+      <p style="color:var(--cinza);font-size:.9rem;line-height:1.85">Este método não é uma promessa de cura. É um conjunto de práticas simples que podem ajudar sua mente a encontrar momentos de descanso real — mesmo nos dias mais agitados.</p>
+    </div>
+
+    <div style="height:1px;background:var(--cream3);margin:28px 0"></div>
+
+    <!-- CAP 2 -->
+    <div style="margin-bottom:40px">
+      <p style="font-size:.68rem;color:var(--sage);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">02</p>
+      <h2 style="font-size:1.7rem;margin-bottom:14px;color:var(--cinza-d)">O que rouba<br><em style="color:var(--sage-d);font-style:italic">sua paz interior</em></h2>
+      <p style="color:var(--cinza);font-size:.9rem;line-height:1.85;margin-bottom:16px">Antes de aprender a recuperar a paz, é útil entender o que a remove.</p>
+
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:16px">
+        <div style="background:var(--branco);border-radius:12px;padding:16px;border-left:3px solid var(--sage)">
+          <p style="font-weight:700;font-size:.9rem;color:var(--cinza-d);margin-bottom:4px">Pensamentos em loop</p>
+          <p style="font-size:.82rem;color:var(--cinza);line-height:1.6">A mente repete situações do passado ou cria cenários futuros que drenam energia — mesmo quando você não quer pensar nisso.</p>
+        </div>
+        <div style="background:var(--branco);border-radius:12px;padding:16px;border-left:3px solid var(--sage)">
+          <p style="font-weight:700;font-size:.9rem;color:var(--cinza-d);margin-bottom:4px">Sobrecarga de informação</p>
+          <p style="font-size:.82rem;color:var(--cinza);line-height:1.6">Redes sociais, notícias, mensagens — o volume de estímulos externos é maior do que nossa mente foi feita para processar.</p>
+        </div>
+        <div style="background:var(--branco);border-radius:12px;padding:16px;border-left:3px solid var(--sage)">
+          <p style="font-weight:700;font-size:.9rem;color:var(--cinza-d);margin-bottom:4px">Peso emocional acumulado</p>
+          <p style="font-size:.82rem;color:var(--cinza);line-height:1.6">Situações que não foram processadas ficam armazenadas como tensão no corpo e na mente — e vão pesando com o tempo.</p>
+        </div>
+        <div style="background:var(--branco);border-radius:12px;padding:16px;border-left:3px solid var(--sage)">
+          <p style="font-weight:700;font-size:.9rem;color:var(--cinza-d);margin-bottom:4px">Falta de momentos de pausa real</p>
+          <p style="font-size:.82rem;color:var(--cinza);line-height:1.6">Descanso não é apenas parar o corpo. A mente precisa de pausas intencionais — sem tela, sem estímulo, sem tarefa.</p>
+        </div>
+      </div>
+      <p style="color:var(--cinza);font-size:.9rem;line-height:1.85">Você não precisa eliminar todos esses fatores. Você precisa criar pequenas janelas de quietude que reequilibram o sistema.</p>
+    </div>
+
+    <div style="height:1px;background:var(--cream3);margin:28px 0"></div>
+
+    <!-- CAP 3: RITUAL 2 MINUTOS -->
+    <div style="margin-bottom:40px">
+      <p style="font-size:.68rem;color:var(--sage);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">03</p>
+      <h2 style="font-size:1.7rem;margin-bottom:14px;color:var(--cinza-d)">O Ritual de<br><em style="color:var(--sage-d);font-style:italic">2 Minutos</em></h2>
+      <p style="color:var(--cinza);font-size:.9rem;line-height:1.85;margin-bottom:18px">Este é o núcleo do método. Pode ser feito em qualquer lugar, a qualquer hora. Não precisa de silêncio perfeito, postura específica ou tempo longo.</p>
+
+      <div style="background:var(--sage-l);border-radius:16px;padding:22px 18px;margin-bottom:18px">
+        <p style="font-weight:700;font-size:.95rem;color:var(--sage-d);margin-bottom:16px;text-align:center">Como fazer:</p>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--sage);flex-shrink:0;line-height:1;width:28px">1</span>
+            <div>
+              <p style="font-weight:600;font-size:.88rem;color:var(--cinza-d);margin-bottom:3px">Pare onde estiver — 10 segundos</p>
+              <p style="font-size:.8rem;color:var(--cinza);line-height:1.6">Sente, deite ou simplesmente pare de se mover. Coloque os dois pés no chão se estiver sentado.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--sage);flex-shrink:0;line-height:1;width:28px">2</span>
+            <div>
+              <p style="font-weight:600;font-size:.88rem;color:var(--cinza-d);margin-bottom:3px">Respire — 60 segundos</p>
+              <p style="font-size:.8rem;color:var(--cinza);line-height:1.6">Inspire contando até 4. Segure por 2. Expire contando até 6. Repita 6 vezes. Foque apenas na contagem — não em mais nada.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--sage);flex-shrink:0;line-height:1;width:28px">3</span>
+            <div>
+              <p style="font-weight:600;font-size:.88rem;color:var(--cinza-d);margin-bottom:3px">Observe sem reagir — 30 segundos</p>
+              <p style="font-size:.8rem;color:var(--cinza);line-height:1.6">Perceba quais pensamentos surgem. Não tente afastá-los. Apenas observe, como quem assiste nuvens passando.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--sage);flex-shrink:0;line-height:1;width:28px">4</span>
+            <div>
+              <p style="font-weight:600;font-size:.88rem;color:var(--cinza-d);margin-bottom:3px">Declare — 20 segundos</p>
+              <p style="font-size:.8rem;color:var(--cinza);line-height:1.6">Diga em voz baixa ou mentalmente: <em>"Estou aqui. Estou bem. Esse momento é suficiente."</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="color:var(--cinza);font-size:.88rem;line-height:1.85;font-style:italic">O ritual não resolve os problemas. Ele interrompe o ciclo de agitação e devolve você ao presente — que é o único lugar onde a paz pode existir.</p>
+    </div>
+
+    <div style="height:1px;background:var(--cream3);margin:28px 0"></div>
+
+    <!-- CAP 4: RESPIRAÇÃO -->
+    <div style="margin-bottom:40px">
+      <p style="font-size:.68rem;color:var(--sage);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">04</p>
+      <h2 style="font-size:1.7rem;margin-bottom:14px;color:var(--cinza-d)">Exercício de<br><em style="color:var(--sage-d);font-style:italic">Respiração Profunda</em></h2>
+      <p style="color:var(--cinza);font-size:.9rem;line-height:1.85;margin-bottom:16px">A respiração é a única função do sistema nervoso autônomo que você controla conscientemente. Isso significa que controlar a respiração é controlar seu estado interno.</p>
+
+      <div style="background:var(--branco);border-radius:14px;padding:20px 16px;margin-bottom:16px;border:1px solid var(--cream3)">
+        <p style="font-weight:700;font-size:.92rem;color:var(--cinza-d);margin-bottom:12px">Técnica 4-7-8</p>
+        <p style="font-size:.83rem;color:var(--cinza);line-height:1.7;margin-bottom:10px"><strong>Inspire</strong> pelo nariz contando até <strong>4</strong></p>
+        <p style="font-size:.83rem;color:var(--cinza);line-height:1.7;margin-bottom:10px"><strong>Segure</strong> o ar contando até <strong>7</strong></p>
+        <p style="font-size:.83rem;color:var(--cinza);line-height:1.7;margin-bottom:10px"><strong>Expire</strong> pela boca contando até <strong>8</strong></p>
+        <p style="font-size:.8rem;color:var(--cinza-l);margin-top:12px">Repita 4 vezes. Ideal antes de dormir ou em momentos de ansiedade aguda.</p>
+      </div>
+
+      <p style="color:var(--cinza);font-size:.88rem;line-height:1.85">A expiração mais longa que a inspiração ativa o sistema nervoso parassimpático — o modo de descanso do seu corpo. Com prática regular, esse estado se torna mais acessível mesmo sem o exercício.</p>
+    </div>
+
+    <div style="height:1px;background:var(--cream3);margin:28px 0"></div>
+
+    <!-- CAP 5: SILÊNCIO MENTAL -->
+    <div style="margin-bottom:40px">
+      <p style="font-size:.68rem;color:var(--sage);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">05</p>
+      <h2 style="font-size:1.7rem;margin-bottom:14px;color:var(--cinza-d)">Exercício de<br><em style="color:var(--sage-d);font-style:italic">Silêncio Mental</em></h2>
+      <p style="color:var(--cinza);font-size:.9rem;line-height:1.85;margin-bottom:16px">Silêncio mental não é esvaziar a mente de pensamentos — isso não é possível. É aprender a não se identificar com cada pensamento que surge.</p>
+
+      <div style="background:var(--sage-l);border-radius:14px;padding:20px 16px;margin-bottom:16px">
+        <p style="font-weight:700;font-size:.92rem;color:var(--sage-d);margin-bottom:10px">Exercício dos 5 minutos</p>
+        <p style="font-size:.83rem;color:var(--cinza-d);line-height:1.75;margin-bottom:8px">1. Sente-se confortavelmente e feche os olhos.</p>
+        <p style="font-size:.83rem;color:var(--cinza-d);line-height:1.75;margin-bottom:8px">2. Observe os pensamentos como carros passando numa rua — você está na calçada, não dentro dos carros.</p>
+        <p style="font-size:.83rem;color:var(--cinza-d);line-height:1.75;margin-bottom:8px">3. Quando notar que "entrou" num pensamento, suavemente se observe de fora novamente. Sem julgamento.</p>
+        <p style="font-size:.83rem;color:var(--cinza-d);line-height:1.75">4. Repita por 5 minutos.</p>
+      </div>
+
+      <p style="color:var(--cinza);font-size:.88rem;line-height:1.85;font-style:italic">"Você não precisa carregar tudo sozinho. Alguns pensamentos podem simplesmente passar."</p>
+    </div>
+
+    <div style="height:1px;background:var(--cream3);margin:28px 0"></div>
+
+    <!-- CAP 6: ROTINA NOTURNA -->
+    <div style="margin-bottom:40px">
+      <p style="font-size:.68rem;color:var(--sage);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">06</p>
+      <h2 style="font-size:1.7rem;margin-bottom:14px;color:var(--cinza-d)">Rotina Noturna<br><em style="color:var(--sage-d);font-style:italic">para Relaxar</em></h2>
+      <p style="color:var(--cinza);font-size:.9rem;line-height:1.85;margin-bottom:18px">Os últimos 20 minutos antes de dormir definem a qualidade do seu sono e do estado com que você acorda.</p>
+
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+        <div style="display:flex;gap:10px;background:var(--branco);border-radius:11px;padding:14px 15px;border:1px solid var(--cream3)">
+          <span style="font-size:1.1rem;flex-shrink:0">📵</span>
+          <div>
+            <p style="font-size:.86rem;font-weight:600;color:var(--cinza-d);margin-bottom:2px">Tela off — 20 min antes</p>
+            <p style="font-size:.78rem;color:var(--cinza);line-height:1.5">Deixe o celular de lado. A luz azul e os estímulos de redes sociais ativam o córtex pré-frontal — exatamente o oposto do que você precisa para dormir.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;background:var(--branco);border-radius:11px;padding:14px 15px;border:1px solid var(--cream3)">
+          <span style="font-size:1.1rem;flex-shrink:0">📝</span>
+          <div>
+            <p style="font-size:.86rem;font-weight:600;color:var(--cinza-d);margin-bottom:2px">Despejo mental</p>
+            <p style="font-size:.78rem;color:var(--cinza);line-height:1.5">Escreva numa folha tudo que está na sua cabeça — tarefas, preocupações, qualquer coisa. Isso esvazia a memória ativa e sinaliza pro cérebro que não precisa mais "segurar" essas informações.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;background:var(--branco);border-radius:11px;padding:14px 15px;border:1px solid var(--cream3)">
+          <span style="font-size:1.1rem;flex-shrink:0">🎵</span>
+          <div>
+            <p style="font-size:.86rem;font-weight:600;color:var(--cinza-d);margin-bottom:2px">Áudio 432Hz</p>
+            <p style="font-size:.78rem;color:var(--cinza);line-height:1.5">Coloque o áudio guiado incluso no produto enquanto deita. Deixe tocar em volume baixo. Não tente "meditar" — apenas ouça.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;background:var(--branco);border-radius:11px;padding:14px 15px;border:1px solid var(--cream3)">
+          <span style="font-size:1.1rem;flex-shrink:0">🌬️</span>
+          <div>
+            <p style="font-size:.86rem;font-weight:600;color:var(--cinza-d);margin-bottom:2px">Ritual de 2 minutos na cama</p>
+            <p style="font-size:.78rem;color:var(--cinza);line-height:1.5">Faça o ritual central (capítulo 03) deitado, com os olhos fechados. Deixe a respiração te levar naturalmente para o sono.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:1px;background:var(--cream3);margin:28px 0"></div>
+
+    <!-- CAP 7: ROTINA DIÁRIA -->
+    <div style="margin-bottom:40px">
+      <p style="font-size:.68rem;color:var(--sage);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">07</p>
+      <h2 style="font-size:1.7rem;margin-bottom:14px;color:var(--cinza-d)">Paz interior<br><em style="color:var(--sage-d);font-style:italic">pode ser treinada</em></h2>
+      <p style="color:var(--cinza);font-size:.9rem;line-height:1.85;margin-bottom:16px">Assim como a força muscular é construída com treino regular, a capacidade de encontrar calma também é. Não é um estado permanente — é uma habilidade que se fortalece com prática.</p>
+
+      <div style="background:var(--sage-l);border-radius:14px;padding:20px 16px;margin-bottom:18px">
+        <p style="font-weight:700;font-size:.92rem;color:var(--sage-d);text-align:center;margin-bottom:14px">Protocolo diário sugerido</p>
+        <p style="font-size:.83rem;color:var(--cinza-d);line-height:1.8;margin-bottom:6px">☀️ <strong>Manhã:</strong> Ritual de 2 minutos antes de pegar o celular</p>
+        <p style="font-size:.83rem;color:var(--cinza-d);line-height:1.8;margin-bottom:6px">🌅 <strong>Tarde:</strong> Técnica 4-7-8 ao sentir tensão acumulada</p>
+        <p style="font-size:.83rem;color:var(--cinza-d);line-height:1.8">🌙 <strong>Noite:</strong> Rotina noturna completa (20 min)</p>
+      </div>
+
+      <p style="color:var(--cinza);font-size:.88rem;line-height:1.85;font-style:italic;text-align:center">"Não precisa ser perfeito. Precisa ser consistente.<br>Um pequeno gesto com intenção real vale mais<br>do que uma hora de meditação sem presença."</p>
+    </div>
+
+    <div style="background:var(--sage-l);border-radius:16px;padding:22px 18px;text-align:center;margin-bottom:32px">
+      <p style="font-size:1.5rem;margin-bottom:10px">🕊️</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--sage-d);line-height:1.7;margin-bottom:12px">"Você não precisa resolver tudo hoje.<br>Você só precisa estar aqui, agora,<br>um respiro por vez."</p>
+      <p style="font-size:.75rem;color:var(--cinza-l)">Ritual Interior · ritualinterior.org</p>
+    </div>
+
+    <button onclick="irPara('p-obrigado')" class="btn-sage">← Voltar para seus materiais</button>
+
+  </div>
+</div>
+
+<script>
+const respostas = {};
+let passo = 0;
+
+const perguntas = [
+  {tipo:"opcoes",chave:"signo",q:"Qual é o seu signo?",sub:"Escolha o signo que mais conecta com você.",opts:["Áries","Touro","Gêmeos","Câncer","Leão","Virgem","Libra","Escorpião","Sagitário","Capricórnio","Aquário","Peixes"]},
+  {tipo:"data",chave:"nascimento",q:"Qual é seu dia e mês de nascimento?",sub:"Só para personalizar sua leitura energética."},
+  {tipo:"ano",chave:"ano",q:"Em que ano você nasceu?",sub:"Isso ajuda a ajustar o momento da sua leitura."},
+  {tipo:"opcoes",chave:"area",q:"Qual área da sua vida mais precisa de mudança hoje?",sub:"Responda pelo que você sente agora.",opts:["Amor","Dinheiro","Energia","Família","Propósito","Ansiedade"]},
+  {tipo:"nome",chave:"nome",q:"Qual é o seu primeiro nome?",sub:"Para deixar seu resultado mais pessoal."}
+];
+
+function irPara(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function renderPergunta(){
+  const p = perguntas[passo];
+  const n = passo+1;
+  const pct = Math.round((n/perguntas.length)*100);
+  document.getElementById('prog-label').textContent = `Pergunta ${n} de ${perguntas.length}`;
+  document.getElementById('prog-pct').textContent = pct+'%';
+  document.getElementById('prog-fill').style.width = pct+'%';
+
+  let html = `<p class="quiz-q">${p.q}</p><p class="quiz-sub">${p.sub}</p>`;
+
+  if(p.tipo === 'opcoes'){
+    html += `<div class="opcoes">${p.opts.map(o=>`<button type="button" class="opcao" data-valor="${o}">${o}</button>`).join('')}</div>`;
+  }
+
+  if(p.tipo === 'data'){
+    html += `
+      <div class="date-grid">
+        <input class="campo" type="number" id="dia" placeholder="Dia" min="1" max="31" inputmode="numeric">
+        <input class="campo" type="number" id="mes" placeholder="Mês" min="1" max="12" inputmode="numeric">
+      </div>
+      <button class="btn-sage" onclick="responderData()">Continuar</button>`;
+  }
+
+  if(p.tipo === 'ano'){
+    html += `
+      <input class="campo" type="number" id="ano" placeholder="Ex: 1996" min="1930" max="2026" inputmode="numeric">
+      <button class="btn-sage" onclick="responderAno()">Continuar</button>`;
+  }
+
+  if(p.tipo === 'nome'){
+    html += `
+      <input class="campo" type="text" id="nome" placeholder="Seu primeiro nome" autocomplete="given-name">
+      <button class="btn-sage" onclick="responderNome()">Ver minha leitura</button>
+      <p class="mini-note">Leitura rápida, privada e sem cadastro.</p>`;
+  }
+
+  document.getElementById('quiz-conteudo').innerHTML = html;
+  document.querySelectorAll('.opcao').forEach(btn=>{
+    btn.addEventListener('click',()=>responder(btn.dataset.valor));
+  });
+}
+
+function responder(val){
+  respostas[perguntas[passo].chave] = val;
+  gtag('event','quiz_resposta',{'event_category':'quiz','event_label':perguntas[passo].chave+':'+val});
+  proximaPergunta();
+}
+
+function proximaPergunta(){
+  passo++;
+  if(passo < perguntas.length){
+    setTimeout(renderPergunta, 220);
+  } else {
+    mostrarAnalise();
+  }
+}
+
+function responderData(){
+  const dia = parseInt(document.getElementById('dia').value,10);
+  const mes = parseInt(document.getElementById('mes').value,10);
+  if(!dia || !mes || dia < 1 || dia > 31 || mes < 1 || mes > 12){
+    alert('Preencha dia e mês para continuar.');
+    return;
+  }
+  responder(`${String(dia).padStart(2,'0')}/${String(mes).padStart(2,'0')}`);
+}
+
+function responderAno(){
+  const ano = parseInt(document.getElementById('ano').value,10);
+  if(!ano || ano < 1930 || ano > 2026){
+    alert('Digite seu ano de nascimento.');
+    return;
+  }
+  responder(String(ano));
+}
+
+function responderNome(){
+  const nome = document.getElementById('nome').value.trim().split(' ')[0];
+  if(!nome){
+    alert('Digite seu primeiro nome para ver a leitura.');
+    return;
+  }
+  responder(nome);
+}
+
+function mostrarAnalise(){
+  const nome = respostas.nome || 'você';
+  document.getElementById('analise-texto').textContent = `${nome}, estamos conectando seu signo, nascimento e a área que mais pede mudança agora.`;
+  gtag('event','quiz_finalizado',{'event_category':'quiz','event_label':respostas.area || ''});
+  irPara('p-transicao');
+  setTimeout(verResultado, 1700);
+}
+
+function verResultado(){
+  const nome = respostas.nome || 'Você';
+  const signo = respostas.signo || 'seu signo';
+  const area = respostas.area || 'sua energia';
+  const textos = {
+    Amor:'se abrir para vínculos mais leves, sem carregar tanta insegurança ou expectativa.',
+    Dinheiro:'sentir mais clareza, segurança e direção nas escolhas materiais.',
+    Energia:'recuperar disposição e presença, sem viver no automático.',
+    Família:'proteger sua paz mesmo quando o ambiente ao redor exige muito de você.',
+    Propósito:'voltar a escutar sua intuição e caminhar com mais sentido.',
+    Ansiedade:'acalmar os pensamentos e recuperar a sensação de controle interno.'
+  };
+  document.getElementById('resultado-titulo').textContent = `${nome}, sua energia pede mais leveza`;
+  document.getElementById('personal-line').textContent = `${signo} + foco em ${area.toLowerCase()}: seu momento pede pausa, limpeza emocional e um ritual simples para voltar ao centro.`;
+  document.getElementById('resultado-texto').textContent = `Sua resposta mostra um desejo real de ${textos[area] || 'mudar sua energia sem complicar sua rotina.'}`;
+  irPara('p-resultado');
+}
+
+// EXIT INTENT
+let popupMostrado = false;
+document.addEventListener('mouseleave', e => {
+  const p = document.querySelector('.page.active');
+  if(e.clientY < 10 && !popupMostrado && p && p.id === 'p-checkout'){
+    popupMostrado = true;
+    document.getElementById('popup-exit').classList.add('active');
+    gtag('event','popup_exit',{'event_category':'popup'});
+  }
+});
+
+// Mobile: inatividade no checkout
+let timer;
+function resetTimer(){
+  clearTimeout(timer);
+  timer = setTimeout(()=>{
+    const p = document.querySelector('.page.active');
+    if(!popupMostrado && p && p.id==='p-checkout'){
+      popupMostrado=true;
+      document.getElementById('popup-exit').classList.add('active');
+    }
+  }, 25000);
+}
+document.addEventListener('touchstart', resetTimer);
+
+function fecharPopup(){
+  document.getElementById('popup-exit').classList.remove('active');
+  gtag('event','popup_fechado',{'event_category':'popup'});
+}
+
+// Inicia
+renderPergunta();
+</script>
+</body>
+</html>
