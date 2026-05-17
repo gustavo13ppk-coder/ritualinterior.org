@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desafio liberado - Treino em Casa</title>
+<meta name="description" content="Baixe o desafio de 7 dias e veja a opção de upgrade para o combo completo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff7ed;--ink:#111827;--muted:#4b5563;--line:#e7d8c4;--green:#138a4b;--green-dark:#0b5f34;--lime:#facc15;--orange:#f97316;--white:#fff;--shadow:0 18px 45px rgba(17,24,39,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;min-height:100vh}
+.wrap{width:min(620px,calc(100% - 28px));margin:0 auto;padding:34px 0 58px}
+.hero{text-align:center;margin-bottom:24px}
+.check{width:62px;height:62px;border-radius:18px;background:var(--lime);display:grid;place-items:center;margin:0 auto 18px;font-size:2rem;font-weight:900}
+h1{font-size:clamp(2rem,8vw,3.15rem);line-height:1;letter-spacing:-.06em;margin-bottom:12px}
+.lead{color:var(--muted);font-size:1rem;max-width:460px;margin:0 auto}
+.card{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:18px;margin:13px 0;box-shadow:var(--shadow)}
+.card-head{display:flex;align-items:flex-start;gap:13px;margin-bottom:15px}
+.icon{width:44px;height:44px;border-radius:12px;background:var(--lime);display:grid;place-items:center;font-weight:900;flex:0 0 auto}
+h2{font-size:1.08rem;letter-spacing:-.03em}
+.card p{color:var(--muted);font-size:.88rem;margin-top:4px}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;border-radius:999px;background:var(--green);color:var(--white);font-weight:900;text-decoration:none;transition:.18s ease;text-align:center;padding:0 16px}
+.btn:hover{background:var(--green-dark);transform:translateY(-1px)}
+.upsell{background:#111827;color:var(--white);border-radius:14px;padding:22px;margin-top:18px;box-shadow:var(--shadow)}
+.upsell .tag{display:inline-flex;background:var(--lime);color:var(--ink);border-radius:999px;padding:7px 10px;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.upsell h2{font-size:1.45rem;line-height:1.08;margin-bottom:8px}
+.upsell p{color:rgba(255,255,255,.76);font-size:.92rem;margin-bottom:16px}
+.price{font-size:3rem;letter-spacing:-.07em;font-weight:900;margin-bottom:14px;color:var(--lime)}
+.support{text-align:center;color:var(--muted);font-size:.82rem;margin-top:24px}
+.support a{color:var(--green-dark);font-weight:800;text-decoration:none}
+@media (max-width:480px){
+  .wrap{padding-top:28px}
+  .card,.upsell{padding:16px}
+  .price{font-size:2.65rem}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="check">OK</div>
+    <h1>Seu desafio foi liberado.</h1>
+    <p class="lead">Baixe o PDF de 7 dias e faça o primeiro treino hoje. É curto, simples e feito para tirar você da inércia.</p>
+  </section>
+
+  <article class="card">
+    <div class="card-head">
+      <div class="icon">7</div>
+      <div>
+        <h2>Desafio de 7 dias</h2>
+        <p>Um treino por dia para começar em casa sem equipamentos caros.</p>
+      </div>
+    </div>
+    <a class="btn" href="downloads/desafio-7-dias-treino.pdf" download>Baixar desafio</a>
+  </article>
+
+  <section class="upsell">
+    <div class="tag">Complete seu plano</div>
+    <h2>Quer também o PDF completo e a planilha?</h2>
+    <p>O combo de R$ 17 inclui o plano de treino em casa + planilha de acompanhamento para você registrar evolução e manter constância.</p>
+    <div class="price">R$17</div>
+    <a class="btn" href="https://pay.kiwify.com.br/SEU-LINK-COMBO">Comprar combo completo</a>
+  </section>
+
+  <p class="support">Dúvidas sobre o acesso? Fale com <a href="mailto:suporte@treinoemcasa.com">suporte@treinoemcasa.com</a></p>
+</main>
+</body>
+</html>

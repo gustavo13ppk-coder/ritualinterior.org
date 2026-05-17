@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Treino em Casa - PDF + Planilha por R$ 17</title>
+<meta name="description" content="Um plano simples para treinar em casa mesmo sem tempo: PDF de treino, planilha de acompanhamento e desafio de 7 dias.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff7ed;--ink:#111827;--muted:#4b5563;--line:#e7d8c4;--card:#ffffff;
+  --green:#138a4b;--green-dark:#0b5f34;--lime:#facc15;--orange:#f97316;--blue:#1d4ed8;--white:#fff;
+  --shadow:0 22px 60px rgba(20,22,17,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+a{text-decoration:none;color:inherit}
+.page{overflow:hidden}
+.wrap{width:min(1120px,calc(100% - 36px));margin:0 auto}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(255,247,237,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(231,216,196,.9)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{font-weight:900;letter-spacing:-.03em;font-size:1.18rem}
+.brand span{color:var(--green)}
+.nav-links{display:flex;align-items:center;gap:22px;font-size:.9rem;color:var(--muted);font-weight:800}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:999px;background:var(--green);color:var(--white);font-weight:900;box-shadow:0 12px 28px rgba(31,122,77,.24);transition:.18s ease;text-align:center}
+.btn:hover{background:var(--green-dark);transform:translateY(-1px)}
+.btn.light{background:var(--lime);color:var(--ink);box-shadow:0 12px 30px rgba(216,255,98,.26)}
+.btn.dark{background:var(--ink);box-shadow:none}
+.hero{padding:72px 0 58px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 430px;gap:54px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:18px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,250,240,.75);color:var(--green-dark);font-size:.76rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+h1{font-size:clamp(2.35rem,6vw,5rem);line-height:.95;letter-spacing:-.07em;margin-bottom:22px;max-width:780px}
+.lead{font-size:clamp(1rem,2vw,1.22rem);color:var(--muted);max-width:650px;margin-bottom:28px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+.proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:640px}
+.proof div{border:1px solid var(--line);background:rgba(255,250,240,.72);border-radius:18px;padding:15px}
+.proof strong{display:block;font-size:1.35rem;letter-spacing:-.04em}
+.proof span{font-size:.78rem;color:var(--muted);font-weight:800}
+.visual{position:relative;border-radius:30px;background:var(--ink);padding:12px;box-shadow:var(--shadow);transform:rotate(2deg)}
+.visual-img{min-height:560px;border-radius:22px;background:linear-gradient(180deg,rgba(20,22,17,.04),rgba(20,22,17,.72)),url("https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80") center/cover}
+.mini-card{position:absolute;left:-30px;bottom:48px;width:260px;border-radius:22px;background:var(--white);box-shadow:var(--shadow);padding:18px}
+.mini-card small{display:block;color:var(--muted);font-weight:900;text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.mini-card h3{font-size:1.05rem;margin-bottom:12px}
+.timer{display:flex;align-items:center;gap:10px}
+.timer b{font-size:2.35rem;letter-spacing:-.06em}
+.timer span{color:var(--green);font-weight:900}
+.badge{position:absolute;right:-18px;top:42px;background:var(--lime);border-radius:18px;padding:13px 15px;font-weight:900;box-shadow:0 14px 34px rgba(20,22,17,.18)}
+.section{padding:74px 0}
+.dark{background:var(--ink);color:var(--white)}
+.green{background:#0f3d2b;color:var(--white)}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:30px}
+h2{font-size:clamp(2rem,4vw,3.65rem);line-height:1;letter-spacing:-.06em;max-width:760px}
+.section-copy{color:var(--muted);max-width:560px;font-size:1rem}
+.dark .section-copy,.green .section-copy{color:rgba(255,255,255,.75)}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:24px}
+.card.dark-card{background:#20231b;border-color:#34382e;color:var(--white)}
+.icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--lime);color:var(--ink);font-weight:900;margin-bottom:18px}
+.card h3{font-size:1.15rem;margin-bottom:8px;letter-spacing:-.03em}
+.card p{color:var(--muted);font-size:.94rem}
+.card.dark-card p{color:rgba(255,255,255,.72)}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;counter-reset:step}
+.step{background:var(--white);border-radius:8px;padding:22px;border:1px solid var(--line);counter-increment:step}
+.step:before{content:counter(step, decimal-leading-zero);display:block;color:var(--orange);font-weight:900;margin-bottom:28px}
+.offer-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:stretch}
+.price-card{position:relative;background:var(--white);color:var(--ink);border-radius:8px;padding:28px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.price-card.featured{border:3px solid var(--lime)}
+.tag{display:inline-flex;padding:7px 10px;border-radius:999px;background:var(--lime);font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.07em;margin-bottom:16px}
+.price-card small{color:var(--muted);font-weight:900;text-transform:uppercase;letter-spacing:.08em}
+.price{font-size:4.3rem;letter-spacing:-.08em;font-weight:900;margin:4px 0 8px}
+.price span{font-size:1.55rem}
+.checks{list-style:none;display:grid;gap:10px;margin:22px 0}
+.checks li{display:flex;gap:10px;color:var(--muted)}
+.checks li:before{content:"✓";color:var(--green);font-weight:900}
+.dark .checks li{color:rgba(255,255,255,.82)}
+.dark .checks li:before{color:var(--lime)}
+.note{font-size:.78rem;color:var(--muted);margin-top:12px}
+.programs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.program{min-height:132px;border-radius:10px;padding:18px;background:#ffffff;color:var(--ink);display:flex;flex-direction:column;justify-content:space-between;border:1px solid rgba(255,255,255,.18);box-shadow:0 16px 34px rgba(0,0,0,.14)}
+.program:nth-child(2n){background:#fff3df}
+.program:nth-child(3n){background:#e9f8ef;color:var(--ink)}
+.program span{font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--green-dark)}
+.program strong{font-size:1.08rem;line-height:1.15;color:var(--ink)}
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+details{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:18px}
+summary{cursor:pointer;font-weight:900;letter-spacing:-.02em}
+details p{color:var(--muted);font-size:.92rem;margin-top:10px}
+.footer{padding:34px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+.footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.mobile-cta{display:none}
+@media (max-width:900px){
+  .nav-links{display:none}
+  .hero-grid,.offer-grid{grid-template-columns:1fr}
+  .visual{max-width:420px;margin:0 auto}
+  .mini-card{left:16px;bottom:26px;width:238px}
+  .badge{right:16px}
+  .grid-3,.steps,.programs,.faq{grid-template-columns:1fr}
+  .proof{grid-template-columns:1fr}
+  .section-head{display:block}
+  .section-copy{margin-top:14px}
+}
+@media (max-width:520px){
+  .wrap{width:min(100% - 28px,1120px)}
+  body{padding-bottom:78px}
+  .nav{height:64px}
+  .brand{font-size:1.03rem}
+  .topbar .btn{min-height:42px;padding:0 14px;font-size:.86rem}
+  .hero{padding-top:34px;padding-bottom:44px}
+  h1{font-size:clamp(2.25rem,13vw,3.45rem);letter-spacing:-.06em}
+  .lead{font-size:1rem}
+  .hero-actions .btn{width:100%}
+  .visual{transform:none;border-radius:22px}
+  .visual-img{min-height:410px;border-radius:16px}
+  .mini-card{width:220px;padding:15px}
+  .section{padding:54px 0}
+  .program{min-height:112px}
+  .price-card{padding:22px}
+  .price{font-size:3.5rem}
+  .mobile-cta{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:50;min-height:54px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#">Treino<span>EmCasa</span></a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#conteudo">Conteúdo</a>
+        <a href="#oferta">Oferta</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn" href="#oferta">Experimente agora</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span>Treino simples para rotina corrida</div>
+          <h1>Treine em casa sem perder tempo pensando no que fazer.</h1>
+          <p class="lead">Receba um plano direto em PDF, uma planilha para acompanhar sua evolução e um desafio de 7 dias para sair do zero com treinos rápidos, sem academia e sem equipamentos caros.</p>
+          <div class="hero-actions">
+            <a class="btn light" href="#oferta">Experimente agora</a>
+            <a class="btn dark" href="#conteudo">Ver o que vem dentro</a>
+          </div>
+          <div class="proof">
+            <div><strong>15-25 min</strong><span>treinos curtos para encaixar no dia</span></div>
+            <div><strong>R$ 17</strong><span>combo completo com PDF + planilha</span></div>
+            <div><strong>7 dias</strong><span>desafio rápido para começar hoje</span></div>
+          </div>
+        </div>
+        <div class="visual" aria-label="Pessoa treinando em casa">
+          <div class="visual-img"></div>
+          <div class="badge">Acesso imediato</div>
+          <div class="mini-card">
+            <small>Treino de hoje</small>
+            <h3>Corpo inteiro em casa</h3>
+            <div class="timer"><b>18</b><span>minutos</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Promessa simples: saber o que fazer hoje.</h2>
+          <p class="section-copy">Nada de assinatura, mensalidade ou lista infinita de aulas. É um material prático para abrir, seguir e marcar sua evolução.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card dark-card"><div class="icon">1</div><h3>Treinos prontos</h3><p>Sequências organizadas para corpo inteiro, abdômen, pernas, glúteos e condicionamento.</p></article>
+          <article class="card dark-card"><div class="icon">2</div><h3>Sem academia</h3><p>Exercícios pensados para sala, quarto ou varanda, usando principalmente o peso do corpo.</p></article>
+          <article class="card dark-card"><div class="icon">3</div><h3>Acompanhamento</h3><p>Planilha simples para registrar treino feito, esforço, medidas e constância semana a semana.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="como-funciona">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Como você começa</h2>
+          <p class="section-copy">O material foi montado para reduzir decisão. Você escolhe o dia, segue a sequência e registra o progresso.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><h3>Baixe o material</h3><p>Depois da compra, você recebe a página com os arquivos para download.</p></div>
+          <div class="step"><h3>Escolha o treino</h3><p>Use o PDF para seguir o treino indicado conforme seu tempo e nível.</p></div>
+          <div class="step"><h3>Marque na planilha</h3><p>Registre treino, esforço, medidas e observações em poucos segundos.</p></div>
+          <div class="step"><h3>Repita por 7 dias</h3><p>Crie ritmo antes de pensar em qualquer rotina complicada.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green" id="conteudo">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>O que vem no material</h2>
+          <p class="section-copy">Um kit enxuto para começar: treino, acompanhamento e um desafio curto para criar o primeiro impulso.</p>
+        </div>
+        <div class="programs">
+          <div class="program"><span>PDF</span><strong>Treino em casa para iniciantes</strong></div>
+          <div class="program"><span>Planilha</span><strong>Controle de treinos e medidas</strong></div>
+          <div class="program"><span>Desafio</span><strong>7 dias para sair do zero</strong></div>
+          <div class="program"><span>Tempo</span><strong>Treinos de 15 a 25 minutos</strong></div>
+          <div class="program"><span>Foco</span><strong>Corpo inteiro sem equipamentos</strong></div>
+          <div class="program"><span>Rotina</span><strong>Opções para dias corridos</strong></div>
+          <div class="program"><span>Nível</span><strong>Adaptações para começar leve</strong></div>
+          <div class="program"><span>Uso</span><strong>Abra no celular ou imprima</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="oferta">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Escolha o plano ideal para você</h2>
+          <p class="section-copy">Pagamento único. Acesso imediato. Sem renovação automática.</p>
+        </div>
+        <div class="offer-grid">
+          <article class="price-card featured">
+            <div class="tag">Mais completo</div>
+            <small>Combo</small>
+            <h3 style="font-size:1.55rem;margin-top:8px">PDF de treino + planilha de acompanhamento</h3>
+            <div class="price">R$17</div>
+            <p style="color:var(--muted)">Para quem quer o plano de treino e um controle simples para manter constância.</p>
+            <ul class="checks">
+              <li>PDF com rotina de treino em casa</li>
+              <li>Planilha de acompanhamento</li>
+              <li>Treinos rápidos para dias sem tempo</li>
+              <li>Acesso imediato após a compra</li>
+            </ul>
+            <a class="btn" style="width:100%" href="https://pay.kiwify.com.br/SEU-LINK-COMBO">Experimente agora</a>
+            <p class="note">Pagamento único. Receba o acesso ao material logo após a compra.</p>
+          </article>
+          <article class="price-card">
+            <small>Entrada rápida</small>
+            <h3 style="font-size:1.55rem;margin-top:8px">Desafio de 7 dias em PDF</h3>
+            <div class="price">R$9</div>
+            <p style="color:var(--muted)">Para quem quer começar com um desafio curto antes de seguir um plano maior.</p>
+            <ul class="checks">
+              <li>PDF com 7 dias de treino</li>
+              <li>Treinos simples e progressivos</li>
+              <li>Ideal para sair da inércia</li>
+              <li>Acesso imediato após a compra</li>
+            </ul>
+            <a class="btn dark" style="width:100%" href="https://pay.kiwify.com.br/SEU-LINK-DESAFIO">Experimente agora</a>
+            <p class="note">Ideal para testar a rotina por uma semana e começar sem enrolar.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Dúvidas frequentes</h2>
+          <p class="section-copy">Tudo direto, do jeito que um material prático precisa ser.</p>
+        </div>
+        <div class="faq">
+          <details open><summary>É assinatura?</summary><p>Não. A oferta é de pagamento único: R$ 17 no combo ou R$ 9 no desafio de 7 dias.</p></details>
+          <details><summary>Como recebo o material?</summary><p>Após a compra, você recebe acesso imediato à página de download do produto escolhido.</p></details>
+          <details><summary>Preciso de equipamentos?</summary><p>Não para começar. Os treinos foram pensados para casa e usam principalmente peso corporal.</p></details>
+          <details><summary>Sou iniciante. Consigo fazer?</summary><p>Sim. Comece leve, respeite pausas e adapte amplitude e intensidade. Consulte um profissional de saúde se tiver alguma condição médica.</p></details>
+          <details><summary>Funciona no celular?</summary><p>Sim. Você pode abrir os PDFs e a planilha no celular, tablet ou computador.</p></details>
+          <details><summary>Tem garantia?</summary><p>Você pode configurar a garantia diretamente na Kiwify conforme sua política comercial.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a class="btn mobile-cta" href="#oferta">Experimente agora</a>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>© 2026 Treino em Casa. Todos os direitos reservados.</p>
+      <p>Resultados variam. Consulte seu médico antes de iniciar atividades físicas.</p>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
